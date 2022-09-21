@@ -5,7 +5,6 @@
 </p>
 
 A simple blog application built with the MERN stack. Browse from the current selection of blog posts made by other members or share your own. Join in on the discussion of your favorite content.
-
 The backend is built out using Node.js and the Express framework. The frontend uses React to create a user-friendly interface. MongoDB Atlas is used for the database working with mongoose. The application is deployed with Heroku. On the backend, the main REST API endpoints are built following the MVC architecture enabling ease of development. API endpoints are secured behind appropriate authentication middlewares.Authentication is handled using JWT. On the frontend with React, the app is structured cleanly with different pages and components. State management is done primarily through basic useState along with useReducer, useContext, and a custom hook for more complex logic. Authentication and blog services are created for ease of use when interacting with the backend APIs.
 
 ## Features
@@ -33,4 +32,16 @@ The backend is built out using Node.js and the Express framework. The frontend u
 - MERN Stack
 - API deployed using Heroku
 
----
+## Links
+
+🔗 **Live preview:** <p>
+<a href="#" target="_blank" rel="noopener noreferrer">View the project here!</a>
+👀
+
+## </p>
+
+🔗 **Blog API:** <p>
+<a href="https://github.com/AminuMado/blog_api" target="_blank" rel="noopener noreferrer">Blog API</a>
+👀
+
+## </p>
