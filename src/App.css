@@ -7,6 +7,10 @@
   background-color: #e8e9eb;
   background-color: #e7e7e7;
 }
+.test-account {
+  font-size: 1.1rem;
+  background: #e7e7e7;
+}
 /* Landing Section */
 
 .landing-background {
@@ -16,7 +20,32 @@
   bottom: 0;
   right: 0;
 }
-
+.landing__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: 1.35rem;
+  gap: 35px;
+}
+.landing__content__header {
+  font-size: 4rem;
+}
+.landing__content__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.landing__content_buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
 /* Landing Buttons  */
 .landing__button {
   font-size: 1.75rem;
