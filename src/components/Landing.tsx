@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import bg_image from "../Assets/images/5.jpg";
 const Landing = () => {
   return (
@@ -12,18 +11,12 @@ const Landing = () => {
         </h3>
         <div className="landing__content__links">
           <div className="landing__content_buttons">
-            <Link to="/signup">
-              <button className="landing__button">Sign Up</button>
-            </Link>
-            <Link to="/login">
-              <button className="landing__button">Log In</button>
-            </Link>
+            <button className="landing__button">Sign Up</button>
+            <button className="landing__button">Log In</button>
           </div>
-          <Link to="#">
-            <p className="test-account">
-              Just Looking around? Use a Test account
-            </p>
-          </Link>
+          <p className="test-account">
+            Just Looking around? Use a Test account
+          </p>
         </div>
       </div>
     </div>
