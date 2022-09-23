@@ -14,7 +14,7 @@ const Modal = () => {
   console.log(login_email);
   console.log(login_password);
   return (
-    <div className="main">
+    <div className="modal">
       <input id="chk" type="checkbox" aria-hidden="true" />
       <div className="signup">
         <form>
