@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Login = () => {
+const Modal = () => {
   const [signup_username, setSignup_username] = useState("");
   const [signup_email, setSignup_email] = useState("");
   const [signup_password, setSignup_password] = useState("");
@@ -83,4 +83,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default Modal;
