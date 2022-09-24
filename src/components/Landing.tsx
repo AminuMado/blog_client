@@ -12,14 +12,13 @@ const Landing = () => {
         className={`overlay ${isActive ? "active" : ""}`}
       ></div>
       <div className="landing">
-        {isActive && (
-          <Modal
-            isLogin={isLogin}
-            setIsLogin={setIsLogin}
-            isActive={isActive}
-            setIsActive={setIsActive}
-          />
-        )}
+        <Modal
+          isLogin={isLogin}
+          setIsLogin={setIsLogin}
+          isActive={isActive}
+          setIsActive={setIsActive}
+        />
+
         <img className="landing-background" src={bg_image} alt="background" />
         <div className="landing__content">
           <h1 className="landing__content__header"> Graphite </h1>
@@ -30,13 +29,19 @@ const Landing = () => {
           <div className="landing__content__links">
             <div className="landing__content_buttons">
               <button
-                onClick={() => setIsLogin(false)}
+                onClick={() => {
+                  setIsLogin(false);
+                  setIsActive(true);
+                }}
                 className="landing__button"
               >
                 Sign Up
               </button>
               <button
-                onClick={() => setIsLogin(true)}
+                onClick={() => {
+                  setIsLogin(true);
+                  setIsActive(true);
+                }}
                 className="landing__button"
               >
                 Log In
