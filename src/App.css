@@ -91,20 +91,23 @@
   height: 100vh;
 }
 .modal {
-  width: 400px;
+  width: 385px;
   height: 535px;
-  background: purple;
+  background: #191919;
   overflow: hidden;
   position: fixed;
-  top: 50%;
+  top: -100vh;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
-  /* transform: scale(0); */
-  z-index: 1;
+  z-index: 3;
+  transition: 0.9s ease-in-out;
 }
-
+.modal.active {
+  scale: 1;
+  top: 50%;
+}
 .modal__signup {
   position: relative;
   width: 100%;
@@ -126,7 +129,7 @@
 .modal input {
   width: 60%;
   height: 20px;
-  background: #e0dede;
+  background: #fff;
   justify-content: center;
   display: flex;
   margin: 20px auto;
@@ -141,8 +144,8 @@
   margin: 10px auto;
   justify-content: center;
   display: block;
-  color: #fff;
-  background: #573b8a;
+  color: black;
+  background: #ced0ce;
   font-size: 1em;
   font-weight: bold;
   margin-top: 20px;
@@ -153,17 +156,17 @@
   cursor: pointer;
 }
 .modal button:hover {
-  background: #6d44b8;
+  background: #a3a380;
 }
 .modal__login {
   height: 460px;
-  background: #eee;
+  background: #e5e5e5;
   border-radius: 60% / 10%;
   transform: translateY(-180px);
   transition: 0.8s ease-in-out;
 }
 .modal__login label {
-  color: #573b8a;
+  color: black;
   transform: scale(0.6);
 }
 
@@ -185,4 +188,11 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
+
+  transition: all 0.9s ease;
+  z-index: 2;
+  left: -100vw;
+}
+.overlay.active {
+  left: 0;
 }
