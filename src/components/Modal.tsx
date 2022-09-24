@@ -6,7 +6,7 @@ type modalProps = {
   isActive: boolean;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const Modal = ({ isLogin, setIsLogin }: modalProps) => {
+const Modal = ({ isLogin, setIsLogin, isActive, setIsActive }: modalProps) => {
   const [signup_username, setSignup_username] = useState("");
   const [signup_email, setSignup_email] = useState("");
   const [signup_password, setSignup_password] = useState("");
@@ -14,7 +14,7 @@ const Modal = ({ isLogin, setIsLogin }: modalProps) => {
   const [login_email, setLogin_email] = useState("");
   const [login_password, setLogin_password] = useState("");
   return (
-    <div className="modal">
+    <div className={`modal ${isActive ? "active" : ""}`}>
       <div className={`modal__signup ${isLogin ? "" : "active"}`}>
         <form>
           <label onClick={() => setIsLogin(!isLogin)}>Sign up</label>
