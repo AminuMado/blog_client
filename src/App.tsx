@@ -1,5 +1,6 @@
 import "./App.css";
 import Landing from "./components/Landing";
+import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Landing />}></Route>
+          <Route path="/home" element={<Home />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
