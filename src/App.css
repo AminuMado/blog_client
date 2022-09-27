@@ -205,12 +205,12 @@
   align-items: center;
   position: relative;
   padding: 0.5rem 0rem;
-  background-color: #fff;
+  background-color: #edede9;
   color: black;
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
   font-size: 25px;
 }
-.home {
+.navigation__home {
   text-decoration: none;
   color: black;
   font-size: 2rem;
@@ -240,4 +240,92 @@
   display: block;
   width: 100%;
   color: inherit;
+}
+.navigation-menu li p {
+  cursor: pointer;
+}
+/* Blogs Section */
+.blogs-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  -moz-box-align: center;
+  align-items: center;
+  margin: 96px 0px;
+}
+.blogs-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-family: "Libre Baskerville", serif;
+  margin: 0px;
+}
+.blogs-subTitle {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-weight: lighter;
+  color: rgb(115, 119, 125);
+  font-family: "Libre Baskerville", serif;
+  margin: 0px;
+  text-align: center;
+}
+
+.blogs {
+  display: grid;
+  grid-gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(20.6rem, 1fr));
+  place-items: center;
+  place-content: center;
+}
+/* Card Section */
+.card {
+  margin: 1rem 1.5rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border-top: 1px solid rgb(115, 119, 125);
+  border-bottom: 1px solid rgb(115, 119, 125);
+  transition: color 0.15s ease, border-color 0.15s ease;
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+.card-title {
+  margin: 0.5rem 0;
+}
+.card-details {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.card-authorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+}
+.card-author {
+  margin: 0.25rem 0;
+}
+.card-published {
+  margin: 0.25rem 0;
+}
+
+.card-commentWrapper {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 1.7rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.card-chatIcon {
+  width: 25px;
 }
