@@ -1,4 +1,3 @@
-import chatIcon from "../Assets/images/chat.png";
 import commentIcon from "../Assets/images/comment.svg";
 const Card = () => {
   return (
