@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="navigation">
-      <Link to="/" className="home">
+      <Link to="/" className="navigation__home">
         Graphite
       </Link>
       <div className="navigation-menu">
