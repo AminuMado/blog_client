@@ -29,6 +29,7 @@
   padding: 10px;
   font-size: 1.35rem;
   gap: 35px;
+  height: 80vh;
 }
 .landing__content h3 {
   text-align: center;
@@ -41,6 +42,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 15px;
 }
 .landing__content_buttons {
   display: flex;
