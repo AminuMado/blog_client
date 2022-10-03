@@ -1,26 +1,46 @@
+import { Link } from "react-router-dom";
 import commentIcon from "../Assets/images/comment.svg";
-const Card = () => {
+
+// Todos
+// We caan destructure this by having a props property
+// id, title, content , username, created date,likescount
+// replace all fixed details with dynamic variables
+type cardProps = {
+  id: string;
+  title: string;
+  content: string;
+  username: string;
+  createdAt: string;
+  commentsCount: number;
+};
+const Card = ({
+  id,
+  title,
+  content,
+  username,
+  createdAt,
+  commentsCount,
+}: cardProps) => {
   return (
     <div className="card">
-      <h2 className="card-title"> The first blog post</h2>
+      <h2 className="card-title">
+        {" "}
+        {title.length > 23 ? content.slice(0, 22) + "..." : title}
+      </h2>
       <div className="card-detailsWrapper">
         <p className="card-details">
-          This should be a very long details and details and details. We need to
-          be able...
+          {content.length > 80 ? content.slice(0, 79) + "..." : content}
         </p>
-        <a href="/blogs/blogId">
-          Read More..
-          {/* add a link to the post here in the anchor tag */}
-        </a>
+        <Link to={`/blogs/${id}`}> Read More..</Link>
       </div>
       <div className="card-authorInfo">
         <span className="card-author">
-          <strong>The Man Himself</strong>
+          <strong>{username}</strong>
         </span>
-        <span className="card-published">27 September 2022</span>
+        <span className="card-published">{createdAt}</span>
         <div className="card-commentWrapper">
           <img src={commentIcon} alt="chat" className="card-chatIcon" />
-          <span className="card-chatCount">10</span>
+          <span className="card-chatCount">{commentsCount}</span>
         </div>
       </div>
     </div>
