@@ -21,46 +21,56 @@ type blog = {
   comments: comment[];
   likes: author[];
 };
-type InitialStateType = {
+// An enum with all the types of actions to use in our reducer
+enum BlogsActionKind {
+  GET = "GET_BLOGS",
+  CREATE = "CREATE_BLOG",
+}
+
+// An interface for our blog state
+interface BlogState {
   blogs: blog[];
-};
+}
+// An interface for our actions
+interface BlogsAction {
+  type: BlogsActionKind;
+  payload: blog[];
+}
+// Our reducer function that uses a switch statement to handle our actions
+function blogsReducer(state: BlogState, action: BlogsAction) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case BlogsActionKind.GET:
+      return {
+        blogs: payload,
+      };
+    case BlogsActionKind.CREATE:
+      return {
+        blogs: [...payload, ...state.blogs],
+      };
+
+    default:
+      return state;
+  }
+}
+
 interface ContextType {
   state: {
     blogs: blog[];
   };
-  dispatch: React.Dispatch<{ type: string; value: InitialStateType }>;
+  dispatch: React.Dispatch<BlogsAction>;
 }
-const initialState: InitialStateType = {
-  blogs: [],
-};
-type reducerActionType = {
-  type: string;
-  payload: InitialStateType;
-};
 
 type BlogsContextProviderProps = {
   children: React.ReactNode;
 };
-export const blogsReducer = (
-  state: InitialStateType,
-  action: reducerActionType
-) => {
-  switch (action.type) {
-    case "SET_BLOGS":
-      return { blogs: action.payload };
-    case "CREATE_BLOG":
-      return {
-        blogs: [action.payload, ...state.blogs],
-      };
-    default:
-      return state;
-  }
-};
-export const BlogsContext = createContext<ContextType>({} as ContextType);
+
+export const BlogsContext = createContext({} as ContextType);
 export const BlogsContextProvider = ({
   children,
 }: BlogsContextProviderProps) => {
-  const [state, dispatch] = useReducer(blogsReducer, initialState);
+  const [state, dispatch] = useReducer(blogsReducer, { blogs: [] });
   return (
     <BlogsContext.Provider value={{ state, dispatch }}>
       {children}
