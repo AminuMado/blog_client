@@ -33,9 +33,7 @@ type BlogContextProviderProps = {
 };
 
 export const BlogContext = createContext({} as ContextType);
-export const BlogsContextProvider = ({
-  children,
-}: BlogContextProviderProps) => {
+export const BlogContextProvider = ({ children }: BlogContextProviderProps) => {
   const [blog, setBlog] = useState<blog | null>(null);
   return (
     <BlogContext.Provider value={{ blog, setBlog }}>
