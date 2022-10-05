@@ -54,16 +54,15 @@ const Blogs = () => {
           <div className="blogs">
             {state.blogs.map((blog) => {
               return (
-                <>
-                  <Card
-                    id={blog._id}
-                    title={blog.title}
-                    content={blog.content}
-                    username={blog.author.username}
-                    createdAt={blog.createdAt}
-                    commentsCount={blog.comments.length}
-                  />
-                </>
+                <Card
+                  key={blog._id}
+                  id={blog._id}
+                  title={blog.title}
+                  content={blog.content}
+                  username={blog.author.username}
+                  createdAt={blog.createdAt}
+                  commentsCount={blog.comments.length}
+                />
               );
             })}
           </div>
