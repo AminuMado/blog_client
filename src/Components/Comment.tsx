@@ -9,7 +9,7 @@ type commentProps = {
 const Comment = ({ username, content, createdAt }: commentProps) => {
   return (
     <div className="comment">
-      <p className="comment-content">T{content} </p>
+      <p className="comment-content">{content} </p>
       <div className="comment-details">
         <div className="comment__details-author">
           <img src={authorIcon} alt="author" />
