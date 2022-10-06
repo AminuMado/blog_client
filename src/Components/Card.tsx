@@ -24,8 +24,7 @@ const Card = ({
   return (
     <div className="card">
       <h2 className="card-title">
-        {" "}
-        {title.length > 23 ? content.slice(0, 22) + "..." : title}
+        {title.length > 23 ? title.slice(0, 22) + "..." : title}
       </h2>
       <div className="card-detailsWrapper">
         <p className="card-details">
