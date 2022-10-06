@@ -8,7 +8,7 @@ type comment = {
   _id: string;
   content: string;
   createdAt: string;
-  author: author;
+  username: string;
   blogId: string;
 };
 
@@ -20,7 +20,6 @@ type blog = {
   createdAt: string;
   author: author;
   comments: comment[];
-  likes: author[];
 };
 
 interface ContextType {
