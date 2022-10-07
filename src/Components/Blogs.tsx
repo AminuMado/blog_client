@@ -18,11 +18,13 @@ const Blogs = () => {
       const response = await fetch("/api/blogs");
       const json: typeof state.blogs = await response.json();
       if (response.ok) {
+        console.log(json);
         dispatch({ type: BlogsActionKind.GET, payload: json });
       }
     };
     getBlogs();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
