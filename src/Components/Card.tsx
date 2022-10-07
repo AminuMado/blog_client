@@ -24,11 +24,11 @@ const Card = ({
   return (
     <div className="card">
       <h2 className="card-title">
-        {title.length > 23 ? title.slice(0, 22) + "..." : title}
+        {title.length > 19 ? title.slice(0, 19) + "..." : title}
       </h2>
       <div className="card-detailsWrapper">
         <p className="card-details">
-          {content.length > 80 ? content.slice(0, 79) + "..." : content}
+          {content.length > 60 ? content.slice(0, 59) + "..." : content}
         </p>
         <Link to={`/blogs/${id}`}> Read More..</Link>
       </div>
