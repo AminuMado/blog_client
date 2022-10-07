@@ -3,6 +3,8 @@ import Landing from "./Components/Landing";
 import Blogs from "./Components/Blogs";
 import Blog from "./Components/Blog";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Profile from "./Components/Profile";
+import BlogForm from "./Components/BlogForm";
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +13,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:blogId" element={<Blog />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/newblog" element={<BlogForm />} />
         </Routes>
       </div>
     </BrowserRouter>
