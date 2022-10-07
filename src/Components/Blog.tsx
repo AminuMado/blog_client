@@ -17,6 +17,7 @@ const Blog = () => {
     return DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL);
   };
   useEffect(() => {
+    setBlog(null);
     const getBlog = async () => {
       const response = await fetch("/api/blogs/" + params.blogId);
       const json: typeof blog = await response.json();
@@ -58,6 +59,7 @@ const Blog = () => {
             {blog?.comments.map((comment) => {
               return (
                 <Comment
+                  id={comment._id}
                   username={comment.username}
                   content={comment.content}
                   createdAt={comment.createdAt}
