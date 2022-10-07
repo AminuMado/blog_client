@@ -47,9 +47,11 @@ const Landing = () => {
                 Log In
               </button>
             </div>
-            <p className="test-account">
-              Just Looking around? Use a Test account
-            </p>
+            <a href="/blogs">
+              <p className="test-account">
+                Just Looking around? Use a Test account
+              </p>
+            </a>
           </div>
         </div>
       </div>
