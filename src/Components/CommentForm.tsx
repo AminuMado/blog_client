@@ -1,4 +1,13 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useBlogContext } from "../hooks/useBlogContext";
+type comment = {
+  _id: string;
+  content: string;
+  createdAt: string;
+  username: string;
+  blogId: string;
+};
 /**
  * -------------- Todos ----------------
  * note that this component is incomplete to create a new comment there has to be a blog to post to and a user that is creating such a post
@@ -10,14 +19,23 @@ import { useState } from "react";
 const CommentForm = () => {
   const [comment, setComment] = useState("");
   const [error, setError] = useState(null);
+  const params = useParams();
+  const { setBlog } = useBlogContext();
+  const addNewComment = (comment: comment) => {
+    setBlog((prev) => {
+      if (prev) {
+        return { ...prev, comments: [...prev.comments, comment] };
+      } else return prev;
+    });
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newComment = {
       content: comment,
-      // Todos
-      //   blog: "expecting a blog id",
-      //   author: "also expecting an author id",
+      blogId: params.blogId,
+      // username is the other field but this will be handled by the server by using the authenticated and saved session user details
     };
+
     const response = await fetch("/api/comment/create", {
       method: "POST",
       body: JSON.stringify(newComment),
@@ -30,23 +48,21 @@ const CommentForm = () => {
     if (response.ok) {
       setComment("");
       setError(null);
-      console.log("new comment added", json);
+      addNewComment(json);
     }
   };
   return (
-    <div className="comment-input">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="comment"
-          placeholder="Leave a comment"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <button type="submit">Submit</button>
-        {error && <div className="comment__input-error">{error}</div>}
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="comment"
+        placeholder="Leave a comment"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+      {error && <div className="comment__input-error">{error}</div>}
+    </form>
   );
 };
 export default CommentForm;
