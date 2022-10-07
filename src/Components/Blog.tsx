@@ -6,6 +6,7 @@ import Comment from "./Comment";
 import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
 import { DateTime } from "luxon";
+import CommentForm from "./CommentForm";
 // change all fixed details spots to dynamic spots
 // read the information of the blog from the db
 // This should use the query from the link to make a call to the db and use the returned information to populate this page
@@ -52,14 +53,7 @@ const Blog = () => {
         </div>
         <div className="comment-container">
           <h1 className="comment-header">Comments</h1>
-          <div className="comment-input">
-            <form>
-              <input type="text" name="comment" placeholder="Leave a comment" />
-              <button type="submit">Submit</button>
-
-              {/* this should be form with one input and be a controlled component but it should be in a comment compoenet */}
-            </form>
-          </div>
+          <div className="comment-input">{blog && <CommentForm />}</div>
           <div className="comments">
             {blog?.comments.map((comment) => {
               return (
