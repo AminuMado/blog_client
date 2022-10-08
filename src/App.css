@@ -460,3 +460,18 @@
 .comment__details-date img {
   width: 17px;
 }
+/* Profile */
+.profile-container {
+  display: grid;
+  padding: 7px;
+  gap: 20px;
+}
+.profile-header {
+  display: flex;
+  align-items: baseline;
+  padding: 15px 2px;
+  margin-bottom: 10px;
+  gap: 10px;
+  justify-content: center;
+  justify-items: center;
+}
