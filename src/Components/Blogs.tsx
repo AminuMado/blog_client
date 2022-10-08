@@ -46,6 +46,7 @@ const Blogs = () => {
                   username={blog.author.username}
                   createdAt={formatDate(blog.createdAt)}
                   commentsCount={blog.comments.length}
+                  options={false}
                 />
               );
             })}
