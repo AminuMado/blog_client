@@ -12,6 +12,7 @@ type cardProps = {
   username: string;
   createdAt: string;
   commentsCount: number;
+  options: boolean;
 };
 const Card = ({
   id,
@@ -20,6 +21,7 @@ const Card = ({
   username,
   createdAt,
   commentsCount,
+  options,
 }: cardProps) => {
   return (
     <div className="card">
@@ -42,6 +44,12 @@ const Card = ({
           <span className="card-chatCount">{commentsCount}</span>
         </div>
       </div>
+      {options && (
+        <div className="card-options">
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
+      )}
     </div>
   );
 };
