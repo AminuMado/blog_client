@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 const UpdateBlog = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   let params = useParams();
   let navigate = useNavigate();
@@ -71,7 +70,6 @@ const UpdateBlog = () => {
       ) : (
         <div>Loading...</div>
       )}
-      {error && <div className="comment__input-error">{error}</div>}
     </div>
   );
 };
