@@ -24,6 +24,7 @@ type blog = {
 enum BlogsActionKind {
   GET = "GET_BLOGS",
   CREATE = "CREATE_BLOG",
+  DELETE = "DELETE_BLOG",
 }
 
 // An interface for our blog state
@@ -48,7 +49,6 @@ function blogsReducer(state: BlogState, action: BlogsAction) {
       return {
         blogs: [...payload, ...state.blogs],
       };
-
     default:
       return state;
   }
