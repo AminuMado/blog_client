@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 import commentIcon from "../Assets/images/comment.svg";
 
-// Todos
-// We caan destructure this by having a props property
-// id, title, content , username, created date,likescount
-// replace all fixed details with dynamic variables
 type cardProps = {
   id: string;
   title: string;
@@ -23,6 +19,22 @@ const Card = ({
   commentsCount,
   options,
 }: cardProps) => {
+  const handleDelete = async () => {
+    // This deletes the comment from the db
+    const response = await fetch(`/api/blogs/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) return;
+
+    if (response.ok) {
+      //Todo
+      // This removes the comment from the state to keep it in sync with the db
+      // Going to try something new here and just refresh the page
+      window.location.reload();
+    }
+  };
   return (
     <div className="card">
       <h2 className="card-title">
@@ -46,8 +58,8 @@ const Card = ({
       </div>
       {options && (
         <div className="card-options">
-          <button>Edit</button>
-          <button>Delete</button>
+          <Link to={`/profile/${id}`}> Edit</Link>
+          <button onClick={handleDelete}>Delete</button>
         </div>
       )}
     </div>
