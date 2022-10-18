@@ -4,11 +4,11 @@ type user = {
   token: string;
 };
 
-// An enum with all the types of actions to use in our reducer
-enum AuthActionKind {
-  LOGIN = "LOGIN_USER",
-  LOGOUT = "LOGOUT_USER",
-}
+// // An enum with all the types of actions to use in our reducer
+// enum AuthActionKind {
+//   LOGIN = "LOGIN_USER",
+//   LOGOUT = "LOGOUT_USER",
+// }
 
 // An interface for our user state
 interface AuthState {
@@ -16,7 +16,7 @@ interface AuthState {
 }
 // An interface for our actions
 interface AuthAction {
-  type: AuthActionKind;
+  type: "LOGIN" | "LOGOUT";
   payload: user | null;
 }
 // Our reducer function that uses a switch statement to handle our actions
@@ -24,11 +24,11 @@ function authReducer(state: AuthState, action: AuthAction) {
   const { type, payload } = action;
 
   switch (type) {
-    case AuthActionKind.LOGIN:
+    case "LOGIN":
       return {
         user: payload,
       };
-    case AuthActionKind.LOGOUT:
+    case "LOGOUT":
       return {
         user: null,
       };
