@@ -31,3 +31,4 @@ export const LoginForm = () => {
     </form>
   );
 };
+export default LoginForm;
