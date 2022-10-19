@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LoginForm from "./LoginForm";
 
 type modalProps = {
   isLogin: boolean;
@@ -11,8 +12,7 @@ const Modal = ({ isLogin, setIsLogin, isActive, setIsActive }: modalProps) => {
   const [signup_email, setSignup_email] = useState("");
   const [signup_password, setSignup_password] = useState("");
   const [signup_confirmPassword, setSignup_confirmPassword] = useState("");
-  const [login_email, setLogin_email] = useState("");
-  const [login_password, setLogin_password] = useState("");
+
   return (
     <div className={`modal ${isActive ? "active" : ""}`}>
       <div className={`modal__signup ${isLogin ? "" : "active"}`}>
@@ -54,26 +54,8 @@ const Modal = ({ isLogin, setIsLogin, isActive, setIsActive }: modalProps) => {
         </form>
       </div>
       <div className={`modal__login ${isLogin ? "active" : ""}`}>
-        <form>
-          <label onClick={() => setIsLogin(!isLogin)}>Log In</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required={true}
-            value={login_email}
-            onChange={(e) => setLogin_email(e.target.value)}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required={true}
-            value={login_password}
-            onChange={(e) => setLogin_password(e.target.value)}
-          />
-          <button>Log In</button>
-        </form>
+        <label onClick={() => setIsLogin(!isLogin)}>Log In</label>
+        <LoginForm />
       </div>
     </div>
   );
