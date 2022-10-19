@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 type user = {
   username: string;
   token: string;
@@ -49,6 +49,14 @@ type AuthCtxProviderProps = {
 export const AuthContext = createContext({} as ContextType);
 export const AuthContextProvider = ({ children }: AuthCtxProviderProps) => {
   const [state, dispatch] = useReducer(authReducer, { user: null });
+  useEffect(() => {
+    // get user from local storage
+    const currentUser = localStorage.getItem("user");
+    if (currentUser) {
+      const user = JSON.parse(currentUser);
+      dispatch({ type: "LOGIN", payload: user });
+    }
+  }, []);
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       {children}
