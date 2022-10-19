@@ -94,7 +94,7 @@
 }
 .modal {
   width: 385px;
-  height: 535px;
+  height: 555px;
   background: #191919;
   overflow: hidden;
   position: fixed;
@@ -173,7 +173,7 @@
 }
 
 .modal__login.active {
-  transform: translateY(-500px);
+  transform: translateY(-530px);
 }
 .modal__login.active label {
   transform: scale(1);
@@ -485,4 +485,8 @@
   padding: 10px;
   background: #ff00003b;
   font-size: 18px;
+}
+.error--light {
+  background: #eeecec3b;
+  color: #f5f9ed;
 }
