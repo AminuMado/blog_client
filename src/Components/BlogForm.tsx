@@ -1,12 +1,14 @@
 import { useState } from "react";
-
+import { useAuthContext } from "../hooks/useUserContext";
 const BlogForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState(null);
+  const { state } = useAuthContext();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!state.user) return;
     const newBlog = {
       title: title,
       content: content,
@@ -15,7 +17,10 @@ const BlogForm = () => {
     const response = await fetch("/api/blogs/", {
       method: "POST",
       body: JSON.stringify(newBlog),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${state.user.token}`,
+      },
     });
     const json = await response.json();
     if (!response.ok) {

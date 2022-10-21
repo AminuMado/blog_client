@@ -7,19 +7,24 @@ import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import CommentForm from "./CommentForm";
+import { useAuthContext } from "../hooks/useUserContext";
 // change all fixed details spots to dynamic spots
 // read the information of the blog from the db
 // This should use the query from the link to make a call to the db and use the returned information to populate this page
 const Blog = () => {
   const { blog, setBlog } = useBlogContext();
   let params = useParams();
+  const user = useAuthContext().state.user;
   const formatDate = (date: string) => {
     return DateTime.fromISO(date).toLocaleString(DateTime.DATE_FULL);
   };
   useEffect(() => {
     setBlog(null);
+    if (!user) return;
     const getBlog = async () => {
-      const response = await fetch("/api/blogs/" + params.blogId);
+      const response = await fetch("/api/blogs/" + params.blogId, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
       const json: typeof blog = await response.json();
 
       if (response.ok) {

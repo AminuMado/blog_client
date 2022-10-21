@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useBlogsContext } from "../hooks/useBlogsContext";
+import { useAuthContext } from "../hooks/useUserContext";
 import Card from "./Card";
 import Navbar from "./Navbar";
 import { DateTime } from "luxon";
@@ -10,12 +11,17 @@ enum BlogsActionKind {
 
 const Blogs = () => {
   const { state, dispatch } = useBlogsContext();
+  const user = useAuthContext().state.user;
   const formatDate = (date: string) => {
     return DateTime.fromISO(date).toFormat("MM-dd-yyyy");
   };
   useEffect(() => {
     const getBlogs = async () => {
-      const response = await fetch("/api/blogs");
+      if (!user) return;
+
+      const response = await fetch("/api/blogs", {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
       const json: typeof state.blogs = await response.json();
       if (response.ok) {
         console.log(json);

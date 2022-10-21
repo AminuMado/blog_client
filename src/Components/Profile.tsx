@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import { blog } from "../types";
 import Card from "./Card";
 import { DateTime } from "luxon";
+import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useUserContext";
 const Profile = () => {
   // TODOs
   // This component should have a list of blogs for the user
@@ -11,15 +13,18 @@ const Profile = () => {
   // The posts hould have an update and delete options beside them
   // The new post should be a whole new page
   const [profileBlogs, setProfileBlogs] = useState<blog[] | null>(null);
+  const user = useAuthContext().state.user;
   const formatDate = (date: string) => {
     return DateTime.fromISO(date).toFormat("MM-dd-yyyy");
   };
   useEffect(() => {
+    if (!user) return;
     const getProfileBlogs = async () => {
-      const response = await fetch("/api/blogs/profile");
+      const response = await fetch("/api/blogs/profile", {
+        headers: { Authorization: `Bearer ${user.token}` },
+      });
       const json: blog[] = await response.json();
       if (response.ok) {
-        console.log(json);
         setProfileBlogs(json);
       }
     };
@@ -34,7 +39,7 @@ const Profile = () => {
           <h1 className="profile-title"> Hello</h1>
           <h2 className="profile-subTitle">The Man Himself</h2>
         </header>
-
+        <Link to="./newblog"> New Blog</Link>
         <div className="profile-posts-container">
           <h1>Your Posts</h1>
           <div className="profile-posts">

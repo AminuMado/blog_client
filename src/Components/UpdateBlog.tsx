@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuthContext } from "../hooks/useUserContext";
 
 const UpdateBlog = () => {
   const [title, setTitle] = useState("");
@@ -7,8 +8,10 @@ const UpdateBlog = () => {
   const [isLoading, setIsLoading] = useState(false);
   let params = useParams();
   let navigate = useNavigate();
+  const user = useAuthContext().state.user;
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!user) return;
     // This updates the blog from on the db
     // We need to get the id from the params on the route
     const updatedBlog = {
@@ -18,7 +21,10 @@ const UpdateBlog = () => {
     const response = await fetch(`/api/blogs/${params.blogId}`, {
       method: "PATCH",
       body: JSON.stringify(updatedBlog),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
 
     if (!response.ok) return;

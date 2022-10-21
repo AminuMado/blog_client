@@ -2,6 +2,7 @@ import clockIcon from "../Assets/images/cloc.png";
 import authorIcon from "../Assets/images/user.png";
 import { DateTime } from "luxon";
 import { useBlogContext } from "../hooks/useBlogContext";
+import { useAuthContext } from "../hooks/useUserContext";
 
 type commentProps = {
   id: string;
@@ -13,7 +14,7 @@ type commentProps = {
 const Comment = ({ id, username, content, createdAt }: commentProps) => {
   // Context Blog
   const { setBlog } = useBlogContext();
-
+  const user = useAuthContext().state.user;
   const formatDate = (date: string) => {
     return DateTime.fromISO(date).toRelativeCalendar();
   };
@@ -29,10 +30,14 @@ const Comment = ({ id, username, content, createdAt }: commentProps) => {
     });
   };
   const deleteComment = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!user) return;
     // This deletes the comment from the db
     const response = await fetch(`/api/comment/${id}/delete`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
 
     if (!response.ok) return;

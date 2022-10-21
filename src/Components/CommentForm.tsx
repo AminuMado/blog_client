@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useBlogContext } from "../hooks/useBlogContext";
+import { useAuthContext } from "../hooks/useUserContext";
+
 type comment = {
   _id: string;
   content: string;
@@ -21,6 +23,7 @@ const CommentForm = () => {
   const [error, setError] = useState(null);
   const params = useParams();
   const { setBlog } = useBlogContext();
+  const user = useAuthContext().state.user;
   const addNewComment = (comment: comment) => {
     setBlog((prev) => {
       if (prev) {
@@ -30,16 +33,20 @@ const CommentForm = () => {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!user) return;
     const newComment = {
       content: comment,
       blogId: params.blogId,
       // username is the other field but this will be handled by the server by using the authenticated and saved session user details
     };
-
+    console.log(user);
     const response = await fetch("/api/comment/create", {
       method: "POST",
       body: JSON.stringify(newComment),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
     if (!response.ok) {
