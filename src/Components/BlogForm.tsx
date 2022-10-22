@@ -27,7 +27,6 @@ const BlogForm = () => {
       setError(json.error);
     }
     if (response.ok) {
-      console.log("new blog", json);
       setTitle("");
       setContent("");
       setError(null);
@@ -35,10 +34,11 @@ const BlogForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="blogForm-container">
+      <form onSubmit={handleSubmit} className="blogForm">
         <label htmlFor="title">Title</label>
         <input
+          className="blogForm__input"
           type="text"
           id="title"
           name="title"
@@ -47,14 +47,15 @@ const BlogForm = () => {
         />
         <label htmlFor="content">Content</label>
         <textarea
+          className="blogForm__textarea"
           value={content}
           id="content"
           name="content"
           onChange={(e) => setContent(e.target.value)}
         />
-        <label htmlFor="published">Published</label>
-        <input type="checkbox" id="published" name="published" />
-        <button type="submit">Submit</button>
+        <button type="submit" className="blogForm__button">
+          Submit
+        </button>
       </form>
       {error && <div className="comment__input-error">{error}</div>}
     </div>
