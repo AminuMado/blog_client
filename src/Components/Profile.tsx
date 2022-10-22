@@ -4,7 +4,7 @@ import { blog } from "../types";
 import Card from "./Card";
 import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../hooks/useUserContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 const Profile = () => {
   // TODOs
   // This component should have a list of blogs for the user

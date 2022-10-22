@@ -2,7 +2,7 @@ import clockIcon from "../Assets/images/cloc.png";
 import authorIcon from "../Assets/images/user.png";
 import { DateTime } from "luxon";
 import { useBlogContext } from "../hooks/useBlogContext";
-import { useAuthContext } from "../hooks/useUserContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 type commentProps = {
   id: string;

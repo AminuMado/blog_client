@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuthContext } from "../hooks/useUserContext";
+import { useAuthContext } from "../hooks/useAuthContext";
+import Navbar from "./Navbar";
 
 const UpdateBlog = () => {
   const [title, setTitle] = useState("");
@@ -56,32 +57,37 @@ const UpdateBlog = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div>
-      {isLoading ? (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label htmlFor="content">Content</label>
-          <textarea
-            value={content}
-            id="content"
-            name="content"
-            onChange={(e) => setContent(e.target.value)}
-          />
-          <label htmlFor="published">Published</label>
-          <input type="checkbox" id="published" name="published" />
-          <button type="submit">Submit</button>
-        </form>
-      ) : (
-        <div>Loading...</div>
-      )}
-    </div>
+    <>
+      <Navbar />
+      <div className="blogForm-container">
+        {isLoading ? (
+          <form onSubmit={handleSubmit} className="blogForm">
+            <label htmlFor="title">Title</label>
+            <input
+              className="blogForm__input"
+              type="text"
+              id="title"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <label htmlFor="content">Content</label>
+            <textarea
+              className="blogForm__textarea"
+              value={content}
+              id="content"
+              name="content"
+              onChange={(e) => setContent(e.target.value)}
+            />
+            <button className="blogForm__button" type="submit">
+              Submit
+            </button>
+          </form>
+        ) : (
+          <div>Loading...</div>
+        )}
+      </div>
+    </>
   );
 };
 export default UpdateBlog;

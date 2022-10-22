@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuthContext } from "./useUserContext";
+import { useAuthContext } from "./useAuthContext";
 
 export const useLogin = () => {
   const { dispatch } = useAuthContext();

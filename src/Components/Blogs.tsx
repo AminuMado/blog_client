@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useBlogsContext } from "../hooks/useBlogsContext";
-import { useAuthContext } from "../hooks/useUserContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 import Card from "./Card";
 import Navbar from "./Navbar";
 import { DateTime } from "luxon";

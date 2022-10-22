@@ -4,13 +4,14 @@ import Blogs from "./Components/Blogs";
 import Blog from "./Components/Blog";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Profile from "./Components/Profile";
-import BlogForm from "./Components/BlogForm";
+import { Newblog } from "./Pages/Newblog";
 import UpdateBlog from "./Components/UpdateBlog";
-import { useAuthContext } from "./hooks/useUserContext";
+import { useAuthContext } from "./hooks/useAuthContext";
+import { Confirmdelete } from "./Pages/ConfirmDelete";
 function App() {
   const { state } = useAuthContext();
   const user = state.user;
-  console.log(user);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -33,11 +34,15 @@ function App() {
           />
           <Route
             path="/profile/newblog"
-            element={user ? <BlogForm /> : <Navigate to="/" />}
+            element={user ? <Newblog /> : <Navigate to="/" />}
           />
           <Route
             path="/profile/:blogId"
             element={user ? <UpdateBlog /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/profile/:blogId/delete"
+            element={user ? <Confirmdelete /> : <Navigate to="/" />}
           />
         </Routes>
       </div>

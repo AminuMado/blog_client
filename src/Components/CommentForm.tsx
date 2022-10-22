@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useBlogContext } from "../hooks/useBlogContext";
-import { useAuthContext } from "../hooks/useUserContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 type comment = {
   _id: string;
