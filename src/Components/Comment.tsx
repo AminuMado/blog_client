@@ -63,7 +63,11 @@ const Comment = ({ id, username, content, createdAt }: commentProps) => {
         </div>
       </div>
 
-      <button onClick={deleteComment}>Delete</button>
+      {user?.username === username ? (
+        <button onClick={deleteComment}>Delete</button>
+      ) : (
+        ""
+      )}
     </>
   );
 };
