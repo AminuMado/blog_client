@@ -35,10 +35,15 @@ const UpdateBlog = () => {
   };
   useEffect(() => {
     const getBlog = async () => {
+      if (!user) return;
       setTitle("");
       setContent("");
       setIsLoading(false);
-      const response = await fetch("/api/blogs/" + params.blogId);
+      const response = await fetch("/api/blogs/" + params.blogId, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       const json = await response.json();
 
       if (response.ok) {
