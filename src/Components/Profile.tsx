@@ -6,12 +6,6 @@ import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 const Profile = () => {
-  // TODOs
-  // This component should have a list of blogs for the user
-  // The user comments too
-  // A new post option
-  // The posts hould have an update and delete options beside them
-  // The new post should be a whole new page
   const [profileBlogs, setProfileBlogs] = useState<blog[] | null>(null);
   const user = useAuthContext().state.user;
   const formatDate = (date: string) => {
@@ -37,9 +31,13 @@ const Profile = () => {
       <div className="profile-container">
         <header className="profile-header">
           <h1 className="profile-title"> Hello</h1>
-          <h2 className="profile-subTitle">The Man Himself</h2>
+          <h2 className="profile-subTitle">{user?.username}</h2>
         </header>
-        <Link to="./newblog"> New Blog</Link>
+
+        <Link to="./newblog">
+          <button className="profile__newBlog">New Blog</button>
+        </Link>
+
         <div className="profile-posts-container">
           <h1>Your Posts</h1>
           <div className="profile-posts">
