@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useBlogContext } from "../hooks/useBlogContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-
 type comment = {
   _id: string;
   content: string;
@@ -10,14 +9,7 @@ type comment = {
   username: string;
   blogId: string;
 };
-/**
- * -------------- Todos ----------------
- * note that this component is incomplete to create a new comment there has to be a blog to post to and a user that is creating such a post
- * for now i only have the content. To get the blog id maybe look into query parameters as the blog id will always be on the path to the page
- * this form exist
- * for the author there should be a way to store the author id in a context and be able to use it or using jwts or something that needs to be
- * figured out also. But this is the template id use for now
- */
+
 const CommentForm = () => {
   const [comment, setComment] = useState("");
   const [error, setError] = useState(null);
@@ -37,9 +29,8 @@ const CommentForm = () => {
     const newComment = {
       content: comment,
       blogId: params.blogId,
-      // username is the other field but this will be handled by the server by using the authenticated and saved session user details
     };
-    console.log(user);
+
     const response = await fetch("/api/comment/create", {
       method: "POST",
       body: JSON.stringify(newComment),
