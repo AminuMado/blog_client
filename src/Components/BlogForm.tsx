@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 const BlogForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState(null);
   const { state } = useAuthContext();
-
+  const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!state.user) return;
@@ -30,6 +31,7 @@ const BlogForm = () => {
       setTitle("");
       setContent("");
       setError(null);
+      navigate("/profile");
     }
   };
 
