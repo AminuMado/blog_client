@@ -278,6 +278,7 @@
   grid-template-columns: repeat(auto-fill, minmax(20.6rem, 1fr));
   place-items: center;
   place-content: center;
+  padding: 7px;
 }
 /* Card Section */
 .card {
@@ -359,7 +360,7 @@
   justify-content: stretch;
   justify-self: center;
   margin: auto;
-  padding: 7px;
+  padding: 12px;
   width: 90vw;
   gap: 20px;
 }
@@ -406,7 +407,7 @@
 .comment-input form {
   display: flex;
   padding: 5px 10px;
-  max-width: 825px;
+  max-width: 1225px;
   justify-content: space-between;
   gap: 8px;
 }
@@ -420,7 +421,7 @@
   max-height: 5rem;
   padding: 8px;
   border: none;
-  max-width: 850px;
+  max-width: 950px;
 }
 .comment-input form button {
   padding: 15px;
@@ -452,9 +453,10 @@
   flex-direction: column;
   border: 1px solid;
   border-left: 4px solid black;
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 5px;
-  max-width: 800px;
+  max-width: 1200px;
+  position: relative;
 }
 .comment-details {
   display: flex;
@@ -479,11 +481,25 @@
 .comment__details-date img {
   width: 17px;
 }
+.comment .deleteIcon {
+  width: 25px;
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  transition: all 0.2s ease-in-out;
+}
+.comment .deleteIcon:hover {
+  transform: scale(1.1);
+}
+.comment .deleteIcon:active {
+  transform: scale(0.95);
+}
 /* Profile */
 .profile-container {
   display: grid;
   padding: 7px;
   gap: 20px;
+  place-items: center;
 }
 .profile-header {
   display: flex;
@@ -493,6 +509,36 @@
   gap: 10px;
   justify-content: center;
   justify-items: center;
+}
+.profile__newBlog {
+  background-color: #ced0ce;
+  padding: 15px;
+  font-size: 30px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin: 5px 20px;
+}
+.profile__newBlog:hover {
+  background-color: #8ca0b1;
+}
+.profile-posts-container {
+  display: grid;
+  justify-content: stretch;
+  justify-self: center;
+  margin: auto;
+  padding: 7px;
+  width: 90vw;
+  gap: 20px;
+}
+.profile-posts {
+  display: grid;
+  grid-gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(20.6rem, 1fr));
+  place-items: center;
+  place-content: center;
 }
 /* Blog Form */
 .blogForm-container {
@@ -560,7 +606,35 @@
     width: 18em;
   }
 }
-
+/* Delete Page */
+.delete-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 26px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+}
+.delete__buttons {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 10px;
+}
+.delete__buttons button {
+  font-size: 35px;
+  padding: 10px;
+  margin: 10px;
+  outline: none;
+  background-color: #aeb3b6a8;
+  border: none;
+}
+.delete__buttons button:hover {
+  background-color: lightgrey;
+}
 /* Error */
 .error {
   display: flex;
