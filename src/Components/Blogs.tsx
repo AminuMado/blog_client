@@ -24,7 +24,6 @@ const Blogs = () => {
       });
       const json: typeof state.blogs = await response.json();
       if (response.ok) {
-        console.log(json);
         dispatch({ type: BlogsActionKind.GET, payload: json });
       }
     };
