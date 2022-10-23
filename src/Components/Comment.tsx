@@ -1,5 +1,6 @@
 import clockIcon from "../Assets/images/cloc.png";
 import authorIcon from "../Assets/images/user.png";
+import deleteIcon from "../Assets/images/trash.png";
 import { DateTime } from "luxon";
 import { useBlogContext } from "../hooks/useBlogContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -29,7 +30,7 @@ const Comment = ({ id, username, content, createdAt }: commentProps) => {
       } else return prev;
     });
   };
-  const deleteComment = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const deleteComment = async (e: React.MouseEvent) => {
     if (!user) return;
     // This deletes the comment from the db
     const response = await fetch(`/api/comment/${id}/delete`, {
@@ -48,27 +49,30 @@ const Comment = ({ id, username, content, createdAt }: commentProps) => {
     }
   };
   return (
-    <>
-      <div className="comment">
-        <p className="comment-content">{content} </p>
-        <div className="comment-details">
-          <div className="comment__details-author">
-            <img src={authorIcon} alt="author" />
-            <p className="comment-author">{username}</p>
-          </div>
-          <div className="comment__details-date">
-            <img src={clockIcon} alt="calendar" />
-            <p className="comment-date">{formatDate(createdAt)}</p>
-          </div>
+    <div className="comment">
+      <p className="comment-content">{content} </p>
+      <div className="comment-details">
+        <div className="comment__details-author">
+          <img src={authorIcon} alt="author" />
+          <p className="comment-author">{username}</p>
+        </div>
+        <div className="comment__details-date">
+          <img src={clockIcon} alt="calendar" />
+          <p className="comment-date">{formatDate(createdAt)}</p>
         </div>
       </div>
 
       {user?.username === username ? (
-        <button onClick={deleteComment}>Delete</button>
+        <img
+          src={deleteIcon}
+          alt="delete"
+          className="deleteIcon"
+          onClick={deleteComment}
+        />
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 };
 export default Comment;
