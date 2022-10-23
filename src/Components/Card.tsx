@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import commentIcon from "../Assets/images/comment.svg";
 import deleteIcon from "../Assets/images/trash.png";
 import editIcon from "../Assets/images/edit.png";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
 
 type cardProps = {
   id: string;
@@ -23,28 +21,6 @@ const Card = ({
   commentsCount,
   options,
 }: cardProps) => {
-  const user = useAuthContext().state.user;
-  const navigate = useNavigate();
-  const handleDelete = async () => {
-    if (!user) return;
-    // This deletes the comment from the db
-    const response = await fetch(`/api/blogs/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-
-    if (!response.ok) return;
-
-    if (response.ok) {
-      //Todo
-      // This removes the comment from the state to keep it in sync with the db
-      // Going to try something new here and just refresh the page
-      navigate("/profile");
-    }
-  };
   return (
     <div className="card">
       <h2 className="card-title">
