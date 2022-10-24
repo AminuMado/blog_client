@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "@types/luxon": "^3.0.1"
+    "@types/luxon": "^3.0.1",
+    "gh-pages": "^4.0.0"
   }
 }
