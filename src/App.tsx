@@ -2,7 +2,7 @@ import "./App.css";
 import Landing from "./Components/Landing";
 import Blogs from "./Components/Blogs";
 import Blog from "./Components/Blog";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 import Profile from "./Components/Profile";
 import { Newblog } from "./Pages/Newblog";
 import UpdateBlog from "./Components/UpdateBlog";
@@ -13,7 +13,7 @@ function App() {
   const user = state.user;
 
   return (
-    <BrowserRouter>
+    <HashRouter basename="/">
       <div className="App">
         <Routes>
           <Route
@@ -46,7 +46,7 @@ function App() {
           />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
