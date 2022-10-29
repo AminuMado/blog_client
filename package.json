@@ -1,6 +1,5 @@
 {
   "homepage": "https://aminumado.github.io/blog_client/",
-  "proxy": "https://fierce-cove-49308.herokuapp.com/",
   "name": "blog_client",
   "version": "0.1.0",
   "private": true,
