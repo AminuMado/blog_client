@@ -20,9 +20,12 @@ const Blog = () => {
     setBlog(null);
     if (!user) return;
     const getBlog = async () => {
-      const response = await fetch("/api/blogs/" + params.blogId, {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
+      const response = await fetch(
+        "https://fierce-cove-49308.herokuapp.com/api/blogs/" + params.blogId,
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
+        }
+      );
       const json: typeof blog = await response.json();
 
       if (response.ok) {

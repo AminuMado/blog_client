@@ -33,13 +33,16 @@ const Comment = ({ id, username, content, createdAt }: commentProps) => {
   const deleteComment = async (e: React.MouseEvent) => {
     if (!user) return;
     // This deletes the comment from the db
-    const response = await fetch(`/api/comment/${id}/delete`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      `https://fierce-cove-49308.herokuapp.com/api/comment/${id}/delete`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
 
     if (!response.ok) return;
 

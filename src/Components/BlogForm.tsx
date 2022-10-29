@@ -15,14 +15,17 @@ const BlogForm = () => {
       content: content,
     };
 
-    const response = await fetch("/api/blogs/", {
-      method: "POST",
-      body: JSON.stringify(newBlog),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${state.user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://fierce-cove-49308.herokuapp.com/api/blogs/",
+      {
+        method: "POST",
+        body: JSON.stringify(newBlog),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${state.user.token}`,
+        },
+      }
+    );
     const json = await response.json();
     if (!response.ok) {
       setError(json.error);

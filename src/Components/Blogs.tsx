@@ -19,9 +19,12 @@ const Blogs = () => {
     const getBlogs = async () => {
       if (!user) return;
 
-      const response = await fetch("/api/blogs", {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
+      const response = await fetch(
+        "https://fierce-cove-49308.herokuapp.com/api/blogs",
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
+        }
+      );
       const json: typeof state.blogs = await response.json();
       if (response.ok) {
         dispatch({ type: BlogsActionKind.GET, payload: json });

@@ -19,14 +19,17 @@ const UpdateBlog = () => {
       title: title,
       content: content,
     };
-    const response = await fetch(`/api/blogs/${params.blogId}`, {
-      method: "PATCH",
-      body: JSON.stringify(updatedBlog),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      `https://fierce-cove-49308.herokuapp.com/api/blogs/${params.blogId}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(updatedBlog),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
 
     if (!response.ok) return;
 
@@ -40,11 +43,14 @@ const UpdateBlog = () => {
       setTitle("");
       setContent("");
       setIsLoading(false);
-      const response = await fetch("/api/blogs/" + params.blogId, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        "https://fierce-cove-49308.herokuapp.com/api/blogs/" + params.blogId,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       const json = await response.json();
 
       if (response.ok) {

@@ -31,14 +31,17 @@ const CommentForm = () => {
       blogId: params.blogId,
     };
 
-    const response = await fetch("/api/comment/create", {
-      method: "POST",
-      body: JSON.stringify(newComment),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://fierce-cove-49308.herokuapp.com/api/comment/create",
+      {
+        method: "POST",
+        body: JSON.stringify(newComment),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
     if (!response.ok) {
       setError(json.error);

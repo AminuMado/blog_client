@@ -14,9 +14,12 @@ const Profile = () => {
   useEffect(() => {
     if (!user) return;
     const getProfileBlogs = async () => {
-      const response = await fetch("/api/blogs/profile", {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
+      const response = await fetch(
+        "https://fierce-cove-49308.herokuapp.com/api/blogs/profile",
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
+        }
+      );
       const json: blog[] = await response.json();
       if (response.ok) {
         setProfileBlogs(json);
