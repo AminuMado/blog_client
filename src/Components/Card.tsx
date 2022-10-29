@@ -28,7 +28,7 @@ const Card = ({
       </h2>
       <div className="card-detailsWrapper">
         <p className="card-details">
-          {content.length > 60 ? content.slice(0, 59) + "..." : content}
+          {content.length > 60 ? content.slice(0, 50) + "..." : content}
         </p>
         <Link to={`/blogs/${id}`}> Read More..</Link>
       </div>
