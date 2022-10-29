@@ -1,10 +1,14 @@
 import { useState } from "react";
 import Modal from "./Modal";
 import bg_image from "../Assets/images/5.jpg";
-
+import { useLogin } from "../hooks/useLogin";
 const Landing = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isActive, setIsActive] = useState(false);
+  const { login } = useLogin();
+  const handleTestAccount = async () => {
+    await login("tester@example.com", "abc123ABC!@#");
+  };
   return (
     <>
       <div
@@ -47,11 +51,11 @@ const Landing = () => {
                 Log In
               </button>
             </div>
-            <a href="/blogs">
+            <button className="testAccountBtn" onClick={handleTestAccount}>
               <p className="test-account">
                 Just Looking around? Use a Test account
               </p>
-            </a>
+            </button>
           </div>
         </div>
       </div>
