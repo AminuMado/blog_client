@@ -35,7 +35,7 @@ The backend is built out using Node.js and the Express framework. The frontend u
 ## Links
 
 <p>
-<a href="#" target="_blank" rel="noopener noreferrer"> 🔗 View the project here!</a>
+<a href="https://aminumado.github.io/blog_client" target="_blank" rel="noopener noreferrer"> 🔗 View the project here!</a>
 👀
 
 <a href="https://github.com/AminuMado/blog_api" target="_blank" rel="noopener noreferrer">🔗 Blog API</a>
